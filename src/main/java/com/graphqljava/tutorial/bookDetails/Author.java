@@ -2,6 +2,7 @@ package com.graphqljava.tutorial.bookDetails;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Author {
     private String id;
@@ -20,8 +21,8 @@ public class Author {
             new Author("author-3", "Anne", "Rice")
     );
 
-    public static Author getById(String id) {
-        return authors.stream().filter(author -> author.getId().equals(id)).findFirst().orElse(null);
+    public static List<Author> getById(List<String> ids) {
+        return authors.stream().filter(author -> ids.contains(author.getId())).collect(Collectors.toList());
     }
 
     public String getId() {

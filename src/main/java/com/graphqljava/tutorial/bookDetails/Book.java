@@ -8,9 +8,9 @@ public class Book {
     private String id;
     private String name;
     private int pageCount;
-    private String authorId;
+    private List<String> authorId;
 
-    public Book(String id, String name, int pageCount, String authorId) {
+    public Book(String id, String name, int pageCount, List<String> authorId) {
         this.id = id;
         this.name = name;
         this.pageCount = pageCount;
@@ -18,9 +18,9 @@ public class Book {
     }
 
     private static List<Book> books = Arrays.asList(
-            new Book("book-1", "Harry Potter and the Philosopher's Stone", 223, "author-1"),
-            new Book("book-2", "Moby Dick", 635, "author-2"),
-            new Book("book-3", "Interview with the vampire", 371, "author-3")
+            new Book("book-1", "Harry Potter and the Philosopher's Stone", 223, Arrays.asList("author-1", "author-2")),
+            new Book("book-2", "Moby Dick", 635, Arrays.asList("author-2")),
+            new Book("book-3", "Interview with the vampire", 371,  Arrays.asList("author-3"))
     );
 
     public static Book getById(String id) {
@@ -31,7 +31,7 @@ public class Book {
         return id;
     }
 
-    public String getAuthorId() {
+    public List<String> getAuthorId() {
         return authorId;
     }
 }
