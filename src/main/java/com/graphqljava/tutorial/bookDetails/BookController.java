@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class BookController {
-    @QueryMapping
+    @SchemaMapping(typeName = "Query")
     public Book bookById(@Argument String id) {
         return Book.getById(id);
     }
@@ -15,5 +15,10 @@ public class BookController {
     @SchemaMapping
     public Author author(Book book) {
         return Author.getById(book.getAuthorId());
+    }
+
+    @SchemaMapping(typeName = "Query")
+    public Author authorById(@Argument String id) {
+        return Author.getById(id);
     }
 }
